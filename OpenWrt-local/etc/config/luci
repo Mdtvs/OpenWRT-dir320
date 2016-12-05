@@ -27,3 +27,9 @@ config internal 'ccache'
 config internal 'themes'
 	option Bootstrap '/luci-static/bootstrap'
 
+config command
+	option name 'wifi up'
+	option param '1'
+	option public '1'
+	option command 'wifi up'
+

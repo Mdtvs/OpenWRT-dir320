@@ -11,12 +11,18 @@ config interface 'lan'
 	option proto 'static'
 	option ipaddr '192.168.1.1'
 	option netmask '255.255.255.0'
-	option macaddr 'fc:75:16:9a:09:f6'
+	option macaddr 'fc:75:16:9a:0a:00'
 
 config interface 'wan'
 	option ifname 'eth0.2'
-	option proto 'dhcp'
-	option macaddr 'fc:75:16:9a:09:f7'
+	option type 'bridge'
+	option _orig_ifname 'eth0.2 radio0.network1'
+	option _orig_bridge 'true'
+	option proto 'static'
+	option ipaddr '10.9.10.120'
+	option netmask '255.255.255.0'
+	option gateway '10.9.10.254'
+	option dns '8.8.8.8'
 
 config switch
 	option name 'rt305x'
@@ -26,10 +32,16 @@ config switch
 config switch_vlan
 	option device 'rt305x'
 	option vlan '1'
-	option ports '0 1 2 3  6t'
+	option ports '0 1 2 3 6t'
 
 config switch_vlan
 	option device 'rt305x'
 	option vlan '2'
-	option ports '4  6t'
+	option ports '4 6t'
+
+config route
+	option interface 'lan'
+	option target '10.9.10.0'
+	option netmask '255.255.255.0'
+	option gateway '10.9.10.254'
 
