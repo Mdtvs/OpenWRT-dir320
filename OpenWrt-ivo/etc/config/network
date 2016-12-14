@@ -9,9 +9,9 @@ config interface 'lan'
 	option ifname 'eth0.1'
 	option type 'bridge'
 	option proto 'static'
-	option ipaddr '192.168.1.1'
-	option netmask '255.255.255.0'
 	option macaddr 'fc:75:16:9a:09:f6'
+	option ipaddr '10.9.15.62'
+	option netmask '255.255.255.248'
 
 config interface 'wan'
 	option ifname 'eth0.2'
@@ -32,4 +32,10 @@ config switch_vlan
 	option device 'rt305x'
 	option vlan '2'
 	option ports '4  6t'
+
+config interface 'MEGAFON'
+	option proto '3g'
+	option device '/dev/ttyUSB0'
+	option service 'umts'
+	option apn 'internet'
 
